@@ -25,7 +25,7 @@ const App = () => {
   }
 
   const returnAnecdoteIndexWithMostVotes = () => {
-  return points.indexOf(Math.max(...points))
+    return points.indexOf(Math.max(...points))
   }
 
   const handleNextClick = () => {
