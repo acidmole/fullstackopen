@@ -1,6 +1,10 @@
-const PersonList = ({ namesToShow }) => {
+import personService from '../services/persons'
+
+const PersonList = ({ namesToShow, handleDelete }) => {
     return (
-      namesToShow.map(person => <li key={person.id}>{person.name}, {person.number}</li>)
+      namesToShow.map(person => <li key={person.id}>{person.name}, {person.number} 
+      <button onClick={handleDelete(person.id)}>delete</button>
+      </li>)
     )
   }
   
