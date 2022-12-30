@@ -15,4 +15,3 @@ const PersonForm = ({ addName, newName, handleNameChange, newNumber, handleNumbe
 }
 
 export default PersonForm
-    
