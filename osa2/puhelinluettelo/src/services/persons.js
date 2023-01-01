@@ -22,5 +22,6 @@ export default {
     getAll, 
     create, 
     update,
-    remove
+    remove,
+    update
 }

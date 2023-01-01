@@ -19,6 +19,41 @@
       "name": "Pertti Nieminen",
       "number": "54321",
       "id": 6
+    },
+    {
+      "name": "Pekka Sauri",
+      "number": "67855",
+      "id": 7
+    },
+    {
+      "name": "Pekka Sauron",
+      "number": "48769",
+      "id": 8
+    },
+    {
+      "name": "Joku Petteri",
+      "number": "12",
+      "id": 9
+    },
+    {
+      "name": "j",
+      "number": "5",
+      "id": 10
+    },
+    {
+      "name": "Albertti",
+      "number": "6877",
+      "id": 11
+    },
+    {
+      "name": "Black Adder",
+      "number": "54-6-8885",
+      "id": 12
+    },
+    {
+      "name": "Joku",
+      "number": "49",
+      "id": 13
     }
   ]
 }

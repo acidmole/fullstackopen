@@ -3,13 +3,16 @@ import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import PersonList from './components/PersonList'
 import personService from './services/persons'
+import Notification from './components/Notification'
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [newFilter, setNewFilter] = useState('')
-
+  const [infoMessage, setInfoMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
+  
   useEffect(() => {
     personService
       .getAll()
@@ -75,6 +78,10 @@ const App = () => {
     setPersons(persons.concat(nameObject))
     setNewName('')
     setNewNumber('')
+    setInfoMessage(`Added ${newName}`)
+    setTimeout(() => {
+      setInfoMessage(null)
+    }, 5000)
   }
 
   const deleteName = (id) => {
@@ -97,15 +104,22 @@ const App = () => {
       .then(response => {
         setPersons(persons.map(n => n.id !== id ? n : response.data))
       })
-  }
-
-
-
-
+      .catch(error => {
+        setErrorMessage(
+          `Information of ${name.name} has already been removed from server`
+        )
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 5000)
+        setPersons(persons.filter(n => n.id !== id))
+      })
+    }
 
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={errorMessage} type="error"></Notification>
+      <Notification message={infoMessage} type="info"></Notification>
       <div>
         <Filter filter={newFilter} setFilter={setNewFilter} handleFilterChange={handleFilterChange}></Filter>
       </div>
