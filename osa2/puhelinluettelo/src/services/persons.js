@@ -1,9 +1,10 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3001/persons'
+const baseUrl = 'http://localhost:3001/api/persons'
 
 const getAll = () => {
-    return axios.get(baseUrl)
+    const request = axios.get(baseUrl)
+    return request.then(response => JSON.parse(JSON.stringify(response.data)))
 }
 
 const create = newObject => {
@@ -18,10 +19,10 @@ const remove = (id) => {
     return axios.delete(`${baseUrl}/${id}`)
 }
 
-export default { 
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
     getAll, 
     create, 
     update,
     remove,
-    update
 }

@@ -17,10 +17,11 @@ const App = () => {
     personService
       .getAll()
       .then(response => {
-        setPersons(response.data)
+        console.log(response)
+        setPersons(response)
       })
-  }, [])
 
+  }, [])
 
   const handleNameChange = (event) => {
     setNewName(event.target.value)
@@ -39,8 +40,6 @@ const App = () => {
       deleteName(id)
     }
   }
-
-
 
   const namesToShow = persons.filter(person => person.name.toLowerCase().includes(newFilter.toLowerCase()))
 
@@ -74,7 +73,6 @@ const App = () => {
       alert(`${newName} is already added to phonebook`)
       return
     }
-    console.log(nameObject)
     setPersons(persons.concat(nameObject))
     setNewName('')
     setNewNumber('')
