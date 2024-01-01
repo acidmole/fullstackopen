@@ -22,6 +22,10 @@ const App = () => {
 
     }, [])
 
+    useEffect(() => {
+        console.log(errorMessage)
+
+    }, [errorMessage])
     const handleNameChange = (event) => {
         setNewName(event.target.value)
     }
@@ -51,7 +55,7 @@ const App = () => {
         }
 
         if (persons.some(person => person.name === newName)) {
-            const result = window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)
+            const result = window.confirm(`${newName} löytyy jo, päivitetäänkö numero?`)
             if (result) {
                 const name = persons.find(n => n.name === newName)
                 updateName(name.id)
@@ -66,19 +70,9 @@ const App = () => {
                 setNewName('')
                 setNewNumber('')
             })
-
-        const found = persons.find(element => element.name === newName)
-        if (found) {
-            alert(`${newName} is already added to phonebook`)
-            return
-        }
-        setPersons(persons.concat(nameObject))
-        setNewName('')
-        setNewNumber('')
-        setInfoMessage(`Added ${newName}`)
-        setTimeout(() => {
-            setInfoMessage(null)
-        }, 5000)
+            .catch(error => {
+                setErrorMessage(error.response.data.error)
+            })
     }
 
     const deleteName = (id) => {

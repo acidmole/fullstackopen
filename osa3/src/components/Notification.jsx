@@ -1,12 +1,12 @@
 // eslint-disable-next-line react/prop-types
-const Person = ({person}) => {
-    if (person) {
-        return (
-            // eslint-disable-next-line react/prop-types
-            <li>{person.name}, {person.number} </li>
-        )
+const Notification = ({ message }) => {
+    if (message === null) {
+        return null
     }
-    return null
+    return (
+        <div className="info">
+            <p color="green">{message}</p>
+        </div>
+    )
 }
-
-export default Person
+export default Notification
