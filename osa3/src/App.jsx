@@ -17,7 +17,7 @@ const App = () => {
         personService
             .getAll()
             .then(response => {
-                setPersons(response.data)
+                setPersons(response)
             })
 
     }, [])
@@ -101,6 +101,7 @@ const App = () => {
             .then(response => {
                 setPersons(persons.map(n => n.id !== id ? n : response.data))
             })
+            // eslint-disable-next-line no-unused-vars
             .catch(error => {
                 setErrorMessage(
                     `Information of ${name.name} has already been removed from server`
